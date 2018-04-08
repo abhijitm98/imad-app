@@ -13,7 +13,7 @@ var article1={
             };
 function createTemp(data){
     var title=data.title;
-    var heading=data.headding;
+    var heading=data.heading;
     var content=data.content;
     var htmlTemplate=`<html>
                         <head>
