@@ -5,6 +5,6 @@ var element= document.getElementById('madi');
 
 function moveright()
 {var marginLeft=0;
-  element.style.marginLeft=marginLeft+100;
+  element.style.marginLeft='100px';
 }
 element.onclick=moveright();
