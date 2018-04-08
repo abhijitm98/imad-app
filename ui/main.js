@@ -1,2 +1,3 @@
 console.log('Loaded!');
-alert('HI I am javascript');
+var element= document.getElementById('main');
+element.innerHTML=' new value of course';
