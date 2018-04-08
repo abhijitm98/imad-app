@@ -7,14 +7,15 @@ app.use(morgan('combined'));
 var article1={
     title: 'My first article',
     heading:'My webpage is under condtruction',
-    content: `
-            <a href='/'>Home</a>
-            <hr/>       
-            <p>This is my first article. Lets write something about it.</p> 
-        `,
-};
-var htmlTemplate=`
-                    <html>
+    content: `<a href='/'>Home</a>
+              <hr/>       
+              <p>This is my first article. Lets write something about it.</p> `,
+            };
+function createTemp(data){
+    var title=data.title;
+    var heading=data.headding;
+    var content=data.content;
+    var htmlTemplate=`<html>
                         <head>
                             <title>${title}</title>
                             <link href="/ui/style.css" rel="stylesheet" />
@@ -26,8 +27,8 @@ var htmlTemplate=`
                             </div>
                         </body>
                     </html>`;
-
-
+                    return htmlTemplate;
+}
     
 
 app.get('/', function (req, res) {
@@ -36,7 +37,7 @@ app.get('/', function (req, res) {
 
 app.get('/article1', function (req, res) 
                     {
-                        res.sendFile(path.join(__dirname, 'ui','article1.html'));
+                        res.send(createTemp(article1));
                     }
         );
 app.get('/article2', function (req, res) 
