@@ -7,4 +7,4 @@ function moveright()
 {var marginLeft=0;
   element.style.marginLeft=marginLeft+100;
 }
-element.onclick(moveright());
+element.onclick=moveright();
