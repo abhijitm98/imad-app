@@ -2,7 +2,7 @@ console.log('Loaded!');
 var element= document.getElementById('main');
 element.innerHTML=' new value of course';
 var element= document.getElementById('madi');
-var marginLeft=0;
+var marginLeft=0;var n=0;
 function moveright()
 {
     marginLeft=marginLeft+10;
@@ -10,5 +10,7 @@ function moveright()
 }
 
 element.onclick=function ()
-{var interval= setInterval(moveright,100);
+{
+    if(n<=10)
+    var interval= setInterval(moveright,100);
 };
