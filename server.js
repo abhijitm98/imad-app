@@ -50,14 +50,6 @@ function createTemp(data){
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
   });
-var counter=0;
-var bt=document.getElementbyId('button');
-var span=document.getElementbyId('s1');
-
-bt.onClick=function(){
-    counter = counter+1;
-    span.send(counter.toString());
-};
 
 app.get('/:article1', function (req, res) 
                     {
