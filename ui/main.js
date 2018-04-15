@@ -8,10 +8,10 @@ button.onclick=function(){
     function check()
     {
       if(request.readystate===XMLHttpRequest.DONE)
-      {
+      { alert('kaam kar raha  h');
           if(request.status===200)
           {
-              alert('kaam kar raha  h');
+             
               var counter=request.responseText;
               var span=document.getElementById('count');
               span.innerHTML=counter;
