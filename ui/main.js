@@ -14,11 +14,19 @@ element.onclick=function ()
 var counter=0;
 var button=document.getElementById('counter');
 button.onclick=function(){
-    //make a request to the counter endpoint
+    //create a requets object
+    var request= new XMLHttpRequest();
+    request.onreadystatechange=function(){
+      if(request.readystate===XMLHttpRequest.DONE){
+          if(request.status===200){
+              counter=request.responseText;
+                var span=document.getElementById('count');
+                span.innerHTML=counter.toString();
+    
+          }
+      }  
+    };
     
     //put the counter value in the correct span
-    counter=counter+1;
-    var span=document.getElementById('count');
-    span.innerHTML=counter.toString();
     
 };
