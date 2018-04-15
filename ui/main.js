@@ -4,11 +4,14 @@ button.onclick=function(){
     //create a requets object
     
     var request= new XMLHttpRequest();
+    request.onreadystatechange=check;
+    request.open('GET','http://abhijitmajee1.imad.hasura-app.io/counter',true);
+    request.send(null);
     
     function check()
     {
       if(request.readystate===XMLHttpRequest.DONE)
-      { alert('kaam kar raha  h');
+      { 
           if(request.status===200)
           {
              
@@ -18,9 +21,7 @@ button.onclick=function(){
     
           }
       } 
-      request.onreadystatechange=check;
-      request.open('GET','http://abhijitmajee1.imad.hasura-app.io/counter',true);
-      request.send(null);
+      
     }
     
 };
