@@ -14,7 +14,8 @@ element.onclick=function ()
 var counter=0;
 var button=document.getElementById('counter');
 button.onclick=function(){
-    //create a requets object
+    //create a requets objecta
+    alert('kaam kar raha  h');
     var request= new XMLHttpRequest();
     request.onreadystatechange=function()
     {
