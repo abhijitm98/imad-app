@@ -11,6 +11,5 @@ function moveright()
 
 element.onclick=function ()
 {
-    if(n<=10)
     var interval= setInterval(moveright,100);
 };
