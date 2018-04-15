@@ -50,6 +50,14 @@ function createTemp(data){
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
   });
+var counter=0;
+var bt=document.getElementbyId('button');
+var span=document.getElementbyId('s1');
+
+bt.onClick=function(){
+    counter = counter+1;
+    span.send(counter.toString());
+};
 
 app.get('/:article1', function (req, res) 
                     {
@@ -64,7 +72,7 @@ app.get('/ui/style.css', function (req, res) {
 });
 app.get('/ui/main.js',function(req,res){
     res.sendFile(path.join(__dirname, 'ui','main.js'));
-})
+});
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
