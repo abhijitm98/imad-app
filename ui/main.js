@@ -2,7 +2,7 @@
 var button=document.getElementById('counter');
 button.onclick=function(){
     //create a requets object
-    alert('kaam kar raha  h');
+    
     var request= new XMLHttpRequest();
     
     function check()
@@ -11,6 +11,7 @@ button.onclick=function(){
       {
           if(request.status===200)
           {
+              alert('kaam kar raha  h');
               var counter=request.responseText;
               var span=document.getElementById('count');
               span.innerHTML=counter;
