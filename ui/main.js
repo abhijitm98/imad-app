@@ -11,3 +11,14 @@ element.onclick=function ()
 {
     var interval= setInterval(moveright,100);
 };
+var counter=0;
+var button=document.getElementById('button');
+button.onclick=function(){
+    //make a request to the counter endpoint
+    
+    //put the counter value in the correct span
+    counter=counter+1;
+    var span=document.getElementById('count');
+    span.innerHTML=counter.toString();
+    
+};
