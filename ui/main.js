@@ -2,7 +2,8 @@
 var button=document.getElementById('counter');
 button.onclick=function(){
     //create a requets object
-    
+    var span=document.getElementById('count');
+              span.innerHTML='working';
     var request= new XMLHttpRequest();
     request.onreadystatechange=check;
     request.open('GET','http://abhijitmajee1.imad.hasura-app.io/counter',true);
@@ -15,9 +16,9 @@ button.onclick=function(){
           if(request.status===200)
           {
              
-              alert(request.responseText);
+              var counter=request.responseText;
               var span=document.getElementById('count');
-              span.innerHTML=counter;
+              span.innerHTML=counter.toString();
     
           }
       } 
