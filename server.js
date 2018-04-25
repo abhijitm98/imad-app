@@ -9,6 +9,8 @@ var config={
     port:'5432',
     password: process.env.DB_PASSWORD
     };
+    
+
 
 var app = express();
 app.use(morgan('combined'));
@@ -58,8 +60,18 @@ function createTemp(data){
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
   });
+
+var pool=new Pool(config);
 app.get('/test-db',function(req,res){
     //make a select request to the database
+    pool.query('SELECT * FROM test',function(err,res){
+        if(err)
+        {
+            res.status(500).send(err.toString());
+        }else {
+            res.send(JSON.stringify(result));
+        }
+    });
     //get a response from the database and display
 });
   
