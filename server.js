@@ -86,7 +86,7 @@ app.get('/articles/:article1', function (req, res)
                         pool.query("SEECT * FROM article WHERE title='"+req.params.article1+"'",function(err,result){
                             if(err){
                                 res.status(500).send(err.toString());
-                            }else if (result.rows[0].length===0){
+                            }else if (result.rows.length===0){
                                 res.status(404).send("ARTICLE NOT FOUND");
                             }else {
                                 var articleData=result.rows[0];
