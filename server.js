@@ -80,11 +80,22 @@ app.get('/counter',function (req,res){
     counter=counter+1;
     res.send(counter.toString());
 });
-app.get('/:article1', function (req, res) 
+app.get('/articles/:article1', function (req, res) 
                     {
-                        var article1=req.params.article1;
-                        res.send(createTemp(articles[article1]));
+                        
+                        pool.query("SEECT * FROM article WHERE title='"+req.params.article1+"'",function(err,result){
+                            if(err){
+                                res.status(500).send(err.toString());
+                            }else if (result.rows[0].length===0){
+                                res.status(404).send("ARTICLE NOT FOUND");
+                            }else {
+                                var articleData=result.rows[0];
+                                res.send(createTemp(articleData));
+                            }
+                        });
                     }
+                        
+                    
         );
 
 
