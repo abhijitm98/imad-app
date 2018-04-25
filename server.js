@@ -83,7 +83,7 @@ app.get('/counter',function (req,res){
 app.get('/articles/:article1', function (req, res) 
                     {
                         
-                        pool.query("SELECT * FROM article WHERE title='"+req.params.article1+"'",function(err,result){
+                        pool.query("SELECT * FROM test WHERE title='"+req.params.article1+"'",function(err,result){
                             if(err){
                                 res.status(500).send(err.toString()+"500");
                             }else if (result.rows.length===0){
