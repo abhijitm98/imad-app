@@ -64,7 +64,7 @@ app.get('/', function (req, res) {
   
  function hash(input,salt){
      var hash=crypto.pbkdf2Sync(input, salt, 10000, 64, 'sha512');
-     return (hash.toString('hex'));
+     return (hash.toString());
  }
 app.get('/hash/:input',function(req,res){
     var hashedString= hash(req.params.input,'This-is-a-random-string');
