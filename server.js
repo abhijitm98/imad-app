@@ -71,7 +71,7 @@ app.get('/', function (req, res) {
 app.get('/create-user/:username',function(req,res){
     var username=req.params.username;
     var password=req.body.password;
-    var salt=crypto.getRandomBytes(128).toString('hex');
+    var salt=crypto.randomBytes(128).toString('hex');
     var hashedString= hash(username,salt);
     res.send(hashedString);
     /*pool.query('INSERT INTO "user" (username,password-hash) VALUES ($1,$2)',[username,hashedString],function(err,result){
