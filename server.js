@@ -74,7 +74,7 @@ app.post('/create-user',function(req,res){
     var salt=crypto.randomBytes(128).toString('hex');
     var hashedString= hash(password,salt);
     
-    pool.query('INSERT INTO "user" (username,"password-hash") VALUES ($1,$2)',[username,hashedString],function(err,result){
+    pool.query('INSERT INTO "user" (username,password) VALUES ($1,$2)',[username,hashedString],function(err,result){
         if(err)
         {
             res.status(500).send(err.toString());
@@ -86,7 +86,7 @@ app.post('/create-user',function(req,res){
 app.post('/login',function(req,res){
     var username=req.body.username;
     var password=req.body.password;
-    pool.query('SELECT FROM "user" WHERE username=$1',[username],function(err,result){
+    pool.query('SELECT * FROM "user" WHERE username=$1',[username],function(err,result){
         if(err)
         {
             res.status(500).send(err.toString()+"yahi error h");
@@ -95,7 +95,7 @@ app.post('/login',function(req,res){
                 res.send("Forbidden");
             }else{
                 //check the password from the database
-                var dbString=result.rows[0].password-hash;
+                var dbString=result.rows[0].password;
                 var salt=dbString.split('$')[2];
                 var hashedpass=hash(password,salt);
                 if(dbString===hashedpass){
