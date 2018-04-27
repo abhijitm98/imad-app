@@ -1,13 +1,15 @@
 
-var button=document.getElementById('counter');
+var button=document.getElementById('submit');
 button.onclick=function(){
     //create a requets object
-    var span=document.getElementById('count');
-              span.innerHTML='working';
+    var username=document.getElementById('username').value;
+    var password=document.getElementById('password').value;  
+    
     var request= new XMLHttpRequest();
     request.onreadystatechange=check;
-    request.open('GET','http://abhijitmajee1.imad.hasura-app.io/counter',true);
-    request.send(null);
+    request.open('POST','http://abhijitmajee1.imad.hasura-app.io/login-user',true);
+    request.setRequestHeader('content-type','application/json');
+    request.send(JSON.stringify({username:username,password:password}));
     
     function check()
     {
@@ -15,13 +17,13 @@ button.onclick=function(){
       { 
           if(request.status===200)
           {
-             
-              var counter=request.responseText;
-              var span=document.getElementById('count');
-              span.innerHTML=counter.toString();
-    
+             alert('You have logged in successfully');
+          }else if(request.status===403){
+              alert('Wrong username/password');
+          }else if(request.status===500){
+          alert('Something went wrong');
           }
-      } 
+      }
       
     }
     
