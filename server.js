@@ -68,20 +68,20 @@ app.get('/', function (req, res) {
      var hash=crypto.pbkdf2Sync(input, salt, 10000, 64, 'sha512');
      return (hash.toString('hex'));
  }
-app.get('/create-user/:username',function(req,res){
-    var username=req.params.username;
+app.post('/create-user',function(req,res){
+    var username=req.body.username;
     var password=req.body.password;
     var salt=crypto.randomBytes(128).toString('hex');
-    var hashedString= hash(username,salt);
-    res.send(hashedString);
-    /*pool.query('INSERT INTO "user" (username,password-hash) VALUES ($1,$2)',[username,hashedString],function(err,result){
+    var hashedString= hash(password,salt);
+    
+    pool.query('INSERT INTO "user" (username,password-hash) VALUES ($1,$2)',[username,hashedString],function(err,result){
         if(err)
         {
             res.status(500).send(err.toString());
         }else {
             res.send("User creation successful");
         }
-        });*/
+        });
 });
 
 var pool=new Pool(config);
