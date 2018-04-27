@@ -5,12 +5,9 @@ button.onclick=function(){
     //create a requets object
     var username=document.getElementById('username').value;
     var password=document.getElementById('password').value;  
-    alert(password.toString());
+    alert(username);
     var request= new XMLHttpRequest();
-    request.onreadystatechange=check;
-    request.open('POST','http://abhijitmajee1.imad.hasura-app.io/login',true);
-    request.setRequestHeader('content-type','application/json');
-    request.send(JSON.stringify({username:username,password:password}));
+   
     
     function check()
     {
@@ -27,5 +24,9 @@ button.onclick=function(){
       }
       
     }
+     request.onreadystatechange=check;
+    request.open('POST','http://abhijitmajee1.imad.hasura-app.io/login',true);
+    request.setRequestHeader('content-type','application/json');
+    request.send(JSON.stringify({username:username,password:password}));
     
 };
