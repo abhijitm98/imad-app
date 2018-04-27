@@ -1,11 +1,11 @@
 
 var button=document.getElementById('submit');
 button.onclick=function(){
-    alert('Button is responding');
+    
     //create a requets object
     var username=document.getElementById('username').value;
     var password=document.getElementById('password').value;  
-    
+    alert(username);
     var request= new XMLHttpRequest();
     request.onreadystatechange=check;
     request.open('POST','http://abhijitmajee1.imad.hasura-app.io/login',true);
