@@ -91,7 +91,7 @@ app.post('/login',function(req,res){
         {
             res.status(500).send(err.toString()+"yahi error h");
         }else {
-            if(result.rows[0].lenght===0){
+            if(result.rows[0].length===0){
                 res.send("Forbidden");
             }else{
                 //check the password from the database
