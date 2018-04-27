@@ -97,8 +97,10 @@ app.post('/login',function(req,res){
            var salt=dbString.split('$')[2];
            var hashedpass=hash(password,salt);
            if(hashedpass===dbString){
+               res.status(200);
                alert('Credentials correct');
            }else {
+               res.status(403);
                alert('Fuck off. Wrong password');
            }
        }
