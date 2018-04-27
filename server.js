@@ -83,35 +83,27 @@ app.post('/create-user',function(req,res){
         }
         });
 });
-app.post('/login-user',function(req,res){
-    var username=req.body.username;
-    var password=req.body.password;
-    res.send("This has reached 1");
-    pool.query('SELECT * FROM "user" WHERE "username"=$1',[username],function(err,result){
-        if(err)
-        {
-            res.status(500).send(err.toString()+"yahi error h");
-        }else {
-            if(result.rows[0].length===0){
-                res.status(403).send("Forbidden");
-            }else{
-                //check the password from the database
-                var dbString=result.rows[0].password;
-                var salt=dbString.split('$')[2];
-                var hashedpass=hash(password,salt);
-                if(dbString===hashedpass){
-                    res.send("Login Successful");
-                }else{
-                    res.send("Invalid username/password");
-                }
-                
-            }
-            
-            
-        }
-        });
+app.post('/login',function(req,res){
+   var username=req.body.username;
+   var password=req.body.password;
+   pool.query('SELECT * FROM "user" WHERE username=$1',[username],function(err,result){
+       if(err){
+           res.status(500).send(err.toString());
+       }else if(result.rows[0].length===0){
+           res.status(404).send('Invalid username/password');
+       }else {
+           //check the password by hashing
+           var dbString=result.rows[0].password;
+           var salt=dbString.split('$')[2];
+           var hashedpass=hash(password,salt);
+           if(hashedpass===dbString){
+               alert('Credentials correct');
+           }else {
+               alert('Fuck off. Wrong password');
+           }
+       }
+   });
 });
-
 var pool=new Pool(config);
 app.get('/test-db',function(req,res){
     //make a select request to the database
