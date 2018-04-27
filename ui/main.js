@@ -5,7 +5,7 @@ button.onclick=function(){
     //create a requets object
     var username=document.getElementById('username').value;
     var password=document.getElementById('password').value;  
-    alert(username.toString());
+    alert(password.toString());
     var request= new XMLHttpRequest();
     request.onreadystatechange=check;
     request.open('POST','http://abhijitmajee1.imad.hasura-app.io/login',true);
