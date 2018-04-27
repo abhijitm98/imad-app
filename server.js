@@ -100,11 +100,13 @@ app.post('/login',function(req,res){
                 var hashedpass=hash(password,salt);
                 if(dbString===hashedpass){
                     res.send("Login Successful");
+                }else{
+                    res.send("Invalid username/password");
                 }
                 
             }
             
-            res.send("User creation successful");
+            
         }
         });
 });
