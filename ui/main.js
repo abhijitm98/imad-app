@@ -2,7 +2,7 @@
 var button=document.getElementById('submit');
 button.onclick=function(){
     
-    //create a requets object
+    /*create a requets object
     var username=document.getElementById('username').value;
     var password=document.getElementById('password').value;  
     //alert(username);
@@ -21,9 +21,9 @@ button.onclick=function(){
           }else if(request.status===500){
           alert('Something went wrong');
           }
-      }
+      }*/
       
-    }
+    };
      request.onreadystatechange=check;
     request.open('POST','http://abhijitmajee1.imad.hasura-app.io/login',true);
     request.setRequestHeader('content-type','application/json');
