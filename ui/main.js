@@ -5,7 +5,7 @@ button.onclick=function(){
     //create a requets object
     var username=document.getElementById('username').value;
     var password=document.getElementById('password').value;  
-    alert(username);
+    //alert(username);
     var request= new XMLHttpRequest();
    
     
